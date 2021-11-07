@@ -1,35 +1,59 @@
+
 public class Main {
     public static void main(String[] args) {
-        Novice no = new Novice();
-        no.name = "2";
-        no.hp = 100;
+        Square s1 = new Square();
+        s1.name = "정사각형";
+        s1.length = 5;
 
-        Wizard wi = new Wizard();
-        wi.name = "3";
-        wi.hp = 120;
-        wi.mp = 100;
-
-        no.punch();
-        wi.punch();
-
-        wi.fireball();
+        Triangle t1 = new Triangle();
+        t1.name = "삼각형";
+        t1.base = 3;
+        t1.height = 4;
 
 
+
+        Circle c1 = new Circle();
+        c1.name = "원";
+        c1.radius = 4;
+
+        Shape[] shapes = { s1 , t1 , c1 };
+
+        for (int i = 0; i< shapes.length; i++ ){
+            Shape tmp = shapes[i];
+            System.out.printf("%s의 넓이 >> %.2f\n", tmp.name, tmp.area());
+
+        }
     }
 }
-class Novice {
+
+class Shape{
     String name;
-    int hp;
 
-    public void punch(){
-        System.out.printf("[%s]의 펀치!\n", name);
+    public double area(){
+        return 0;
     }
-
 }
-class Wizard extends Novice {
-    int mp;
 
-    public void fireball(){
-        System.out.printf("[%s]의 파이어볼!",name);
+class Square extends Shape{
+    int length;
+
+    public double area() {
+        return length * length;
+    }
+}
+
+class Triangle extends Shape{
+    int base;
+    int height;
+
+    public double area() {
+        return base * height / 2.0;
+    }
+}
+
+class Circle extends Shape{
+    int radius;
+    public double area() {
+        return Math.PI *radius * radius;
     }
 }
