@@ -2,13 +2,13 @@
 public class Main {
     public static void main(String[] args) {
         Elf elf = new Elf("엘프", 100);
-        System.out.printf(elf.toString());
+        System.out.println(elf.toString());
 
         HighElf hi = new HighElf("하이엘프", 120, 200);
-        System.out.printf(hi.toString());
+        System.out.println(hi.toString());
 
-        LoadElf Lo = new LoadElf("로드엘프", 100, 140, 220);
-        System.out.printf(Lo.toString());
+        LoadElf lo = new LoadElf("로드엘프", 100, 140, 220);
+        System.out.println(lo.toString());
 
 
     }
@@ -49,4 +49,5 @@ class LoadElf extends HighElf{
     }
 
 }
+//rmt
 
