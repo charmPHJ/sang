@@ -1,59 +1,52 @@
 
 public class Main {
     public static void main(String[] args) {
-        Square s1 = new Square();
-        s1.name = "정사각형";
-        s1.length = 5;
+        Elf elf = new Elf("엘프", 100);
+        System.out.printf(elf.toString());
 
-        Triangle t1 = new Triangle();
-        t1.name = "삼각형";
-        t1.base = 3;
-        t1.height = 4;
+        HighElf hi = new HighElf("하이엘프", 120, 200);
+        System.out.printf(hi.toString());
+
+        LoadElf Lo = new LoadElf("로드엘프", 100, 140, 220);
+        System.out.printf(Lo.toString());
 
 
-
-        Circle c1 = new Circle();
-        c1.name = "원";
-        c1.radius = 4;
-
-        Shape[] shapes = { s1 , t1 , c1 };
-
-        for (int i = 0; i< shapes.length; i++ ){
-            Shape tmp = shapes[i];
-            System.out.printf("%s의 넓이 >> %.2f\n", tmp.name, tmp.area());
-
-        }
     }
 }
+class Elf{
+    protected String name;
+    protected int hp;
 
-class Shape{
-    String name;
-
-    public double area(){
-        return 0;
+    public Elf(String name, int hp){
+        this.name = name;
+        this.hp = hp;
+    }
+    public String toString() {
+        return String.format("[%s]의 체력 : %d",this.name, this.hp);
     }
 }
+class HighElf extends Elf{
+    protected int mp;
 
-class Square extends Shape{
-    int length;
-
-    public double area() {
-        return length * length;
+    public HighElf(String name, int hp, int mp){
+        super(name,hp);
+        this.mp = mp; // 이걸할려면 메소드 오버라이딩해야됨.
     }
+    public String toString(){
+        return String.format("[%s]의 체력 : %d   마나: %s", super.name, super.hp, this.mp);
+    }
+
+}
+class LoadElf extends HighElf{
+    protected int sh;
+
+    public LoadElf(String name, int hp, int mp, int sh){
+        super(name,hp,mp);
+        this.sh = sh;
+    }
+    public String toString(){
+        return String.format("[%s]의 체력 : %d   마나: %s, 쉴드: %s", super.name, super.hp, super.mp,this.sh);
+    }
+
 }
 
-class Triangle extends Shape{
-    int base;
-    int height;
-
-    public double area() {
-        return base * height / 2.0;
-    }
-}
-
-class Circle extends Shape{
-    int radius;
-    public double area() {
-        return Math.PI *radius * radius;
-    }
-}
