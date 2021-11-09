@@ -1,56 +1,40 @@
 
+
 public class Main {
-    public static void main(String[] args) {
-        Person park = new Person("팍");
+    public static void main(String[] args) { // 여기 스코어와
+        Knight don = new Knight("돈키호테", 30);
+        System.out.printf("%s\n", don.toString());
 
-        Develop dev = park;
-        Teacher tea = park;
-        Back bac = park;
 
-        dev.programing("java");
-        tea.teach("과학");
-        bac.play("게임");
+        don.setHp(don.getHp() + 30) ;
+        System.out.printf("%s\n", don.toString());
     }
 }
-interface Develop{
-    public void programing(String lang);
-
-}
-
-interface Teacher {
-    public void teach(String subject);
-}
-
-interface Back {
-    public void play(String playball);
-
-}
-
-class Person implements Develop, Teacher, Back {
+class Knight {
     private String name;
+    private int hp;
 
-    public Person(String name) {
+    public Knight(String name, int hp) {
         this.name = name;
-
-
-    }
-
-    public void programing(String lang) {
-        System.out.printf("%s >> %s 프로그램중 \n", name, lang);
+        this.hp = hp;
 
     }
 
-    public void teach(String subject){
-        System.out.printf("%s >> %s 가르치는 중 \n", name, subject);
+    public int getHp(){
+        return this.hp;
 
     }
 
-    public void play(String playball) {
-        System.out.printf("%s >> %s 노는 중 \n", name, playball);
+    public void setHp(int hp) {
+        this.hp = hp;
 
     }
 
+    public String toString() {
+        return String.format("Knight { 나이트 이름 : %s, 체력 : %d }", name, hp);
+    }
 
 }
+
 
 
